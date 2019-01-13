@@ -8,7 +8,12 @@ import styled from 'styled-components';
 class Main extends React.Component {
     render() {
         return (
-            <h1>Main</h1>
+            <Row>
+                <Col lg={5}>
+                </Col>
+                <Col lg={6} lgOffset={1}>
+                </Col>
+            </Row>
         );
     }
 }
