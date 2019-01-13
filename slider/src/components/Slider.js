@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Slide_1 from '../img/slide-1';
-import Slide_2 from '../img/slide-2';
-import Slide_3 from '../img/slide-3';
-import Slide_4 from '../img/slide-4';
+import Slide_1 from '../img/slide-1.jpg';
+import Slide_2 from '../img/slide-2.jpg';
+import Slide_3 from '../img/slide-3.jpg';
+import Slide_4 from '../img/slide-4.jpg';
 
 class Slider extends React.Component {
     constructor(props) {
@@ -21,6 +21,9 @@ class Slider extends React.Component {
                 },
                 {
                     eachSlide: `url(${Slide_4})`
+                },
+                {
+                    eachSlide: `url(${Slide_2})`
                 }
             ],
             autoplay: false,
@@ -96,7 +99,7 @@ class Slider extends React.Component {
     }
 
     setSliderStyles() {
-        const transition = this.state.active * -100 / this.state.slides.length;
+        const transition = this.state.active * - 100 / this.state.slides.length;
 
         return {
             width: (this.state.slides.length * 100) + '%',
@@ -109,11 +112,10 @@ class Slider extends React.Component {
 
         return this.state.slides.map((item, index) => (
             <div
-                className='each-slide'
+                className="each-slide"
                 key={index}
                 style={{backgroundImage: item.eachSlide, width: transition}}>
             </div>
-
         ))
     }
 
@@ -122,11 +124,10 @@ class Slider extends React.Component {
             <li
                 className={this.isActive(index) + ' dots'}
                 key={index}
-                ref='dots'
+                ref="dots"
                 onClick={this.dots.bind(this, index)}>
                 <a>&#9679;</a>
             </li>
-
         ))
     }
 
@@ -159,17 +160,43 @@ class Slider extends React.Component {
                         <path d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/>
                         <path d='M0 0h24v24H0z' fill='none'/>
                     </svg>
-
                 </button>
-
+                <button
+                    className="arrows  next"
+                    type="button"
+                    onClick={this.nextOne}>
+                    <svg fill='#FFFFFF' height='50' viewBox='0 0 24 24' width='50'>
+                        <path d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/>
+                        <path d='M0 0h24v24H0z' fill='none'/>
+                    </svg>
+                </button>
             </div>
         )
-
     }
 
     render() {
         return (
+            <div className="slider">
+                <div 
+                    className="wrapper"
+                    style={this.setSliderStyles()}>
+                    {this.renderSlides()}
+                </div>
 
+                {this.renderArrows()}
+
+                <ul className="dots-container">
+                    {this.renderDots()}
+                </ul>
+
+                <a
+                    className="toggle-play"
+                    onClick={this.toggleAutoPlay}>
+                        {this.renderPlayStop()}
+                </a>
+            </div>
         );
     }
 }
+
+export default Slider
