@@ -51,6 +51,10 @@ const CallButton = styled.button`
     background-color: #3fc7db;
     border: 0;
     border-radius: 24px;
+
+    &:hover {
+        background-color: #30b8cc;
+    }
 `
 
 class Address extends React.Component {

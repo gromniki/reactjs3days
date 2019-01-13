@@ -44,11 +44,11 @@ class App extends Component {
                     <Menu />
                 </Grid>
             </MenuWrapper>
-            <MenuWrapper>
+            <MainWrapper>
                 <Grid>
                     <Main />
                 </Grid>
-            </MenuWrapper>
+            </MainWrapper>
         </div>
         );
     }
